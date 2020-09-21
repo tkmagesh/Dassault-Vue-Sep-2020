@@ -76,3 +76,6 @@ ES Modules
     Everything defined in a js file is considered 'PRIVATE'
     Any public entities have to be explicitly exported
     Any public entity from other module need to explicitly imported
+
+Study: 
+    Array Methods : map, forEach, reduce, filter
