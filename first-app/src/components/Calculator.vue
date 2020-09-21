@@ -1,8 +1,8 @@
 <template>
   <div>
     <h3>Calculator</h3>
-    <input type="number" name id />
-    <input type="number" name id />
+    <input type="number" />
+    <input type="number" />
     <br />
     <input type="button" value="Add" />
     <input type="button" value="Subtract" />
@@ -13,7 +13,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "Calculator"
+};
 </script>
 
 <style>
