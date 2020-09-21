@@ -3,6 +3,7 @@
     <label>User Name :</label>
     <input type="text" v-model="userName" />
     <input type="button" value="Greet" @click="onGreet()" />
+    <input type="button" value="Clear" @click="onClear()" />
     <div>{{message}}</div>
   </div>
 </template>
@@ -18,9 +19,11 @@ export default {
   },
   methods: {
     onGreet: function() {
-      //console.log("Change user action triggered");
-      //this.userName = prompt("Enter the user name :");
       this.message = `Hi ${this.userName}, ${this.msg}`;
+    },
+    onClear: function() {
+      this.userName = "";
+      this.message = "";
     }
   },
   props: {

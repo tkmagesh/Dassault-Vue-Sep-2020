@@ -1,0 +1,20 @@
+<template>
+  <div>
+    <h3>Calculator</h3>
+    <input type="number" name id />
+    <input type="number" name id />
+    <br />
+    <input type="button" value="Add" />
+    <input type="button" value="Subtract" />
+    <input type="button" value="Multiply" />
+    <input type="button" value="Divide" />
+    <div></div>
+  </div>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style>
+</style>
