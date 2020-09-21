@@ -1,0 +1,78 @@
+Vue.js
+    UI
+    Application = composition of components
+    Component = Object encapsulating Presentation + UI Behavior + UI State
+
+Vue Building Blocks 
+    Component
+    Directive (DOM Manipulation)
+    Router
+    Vuex (State Management Solution)
+
+Vue Cli
+    - node module
+
+Node Package Manager (npm) OR yarn
+
+To install yarn (optional)
+    npm install yarn -g
+
+To install vue cli
+    npm install @vue/cli -g
+        OR
+    yarn global add @vue/cli
+
+
+
+TypeScript
+
+    public int x;
+    x = "abc"
+
+    var x;
+
+    x = 10;
+    x = 'string'
+    x = {}
+    x = []
+
+    function add(x,y){
+        if (typeof x !== 'number' || typeof y !== 'number')
+            throw new Error('Invalid argument(s)!');
+        return x + y;
+    }
+
+
+    var x : number = 10;
+
+    function add(x : number, y : number) : number {
+        return x + y;
+    }
+
+    add(10,'abc')
+
+        |
+        |
+        V
+        tsc
+        |
+        |
+        V
+
+    var x  = 10;
+
+    function add(x , y ) : number {
+        return x + y;
+    }
+
+    npm run serve
+
+    yarn serve
+
+    yarn add global vue-cli-service
+
+
+ES Modules
+    Everything defined in a js file is considered 'PRIVATE'
+    Any public entities have to be explicitly exported
+    Any public entity from other module need to explicitly imported
