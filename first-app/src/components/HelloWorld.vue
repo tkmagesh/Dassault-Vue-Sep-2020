@@ -1,7 +1,9 @@
 <template>
   <div>
+    <label>User Name :</label>
+    <input type="text" v-model="userName" />
+    <input type="button" value="Change User" @click="onChangeUser()" />
     <div>Hi {{userName}}!</div>
-    <input type="button" value="Change User" />
   </div>
 </template>
 
@@ -13,7 +15,12 @@ export default {
       userName: "Magesh"
     };
   },
-
+  methods: {
+    onChangeUser: function() {
+      //console.log("Change user action triggered");
+      this.userName = prompt("Enter the user name :");
+    }
+  },
   props: {
     msg: String
   },
