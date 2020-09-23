@@ -2,7 +2,7 @@
   <div>
     <h3>Calculator</h3>
     <input type="number" v-model.number="number1" />
-    <select v-model="operator">
+    <select @change="onCalculate($event)">
       <option value>- select -</option>
       <option value="add">Add</option>
       <option value="subtract">Subtract</option>
@@ -27,33 +27,49 @@ export default {
     return {
       number1: 0,
       number2: 0,
-      operator: ""
+      result: 0
     };
   },
   computed: {
-    result: function() {
-      switch (this.operator) {
-        case "add":
-          return this.number1 + this.number2;
-        case "subtract":
-          return this.number1 - this.number2;
-        case "multiply":
-          return this.number1 * this.number2;
-        case "divide":
-          return this.number1 / this.number2;
-
-        default:
-          return 0;
-      }
-    },
     resultToDisplay: function() {
+      console.log("resultToDisplay computed method is invoked");
       if (this.result < 0) {
         return `(${this.result})`;
       } else {
         return this.result;
       }
     }
-  }
+  },
+  methods: {
+    onCalculate: function(evt) {
+      switch (evt.target.value) {
+        case "add":
+          this.result = this.number1 + this.number2;
+          break;
+        case "subtract":
+          this.result = this.number1 - this.number2;
+          break;
+        case "multiply":
+          this.result = this.number1 * this.number2;
+          break;
+        case "divide":
+          this.result = this.number1 / this.number2;
+          break;
+
+        default:
+          break;
+      }
+    }
+    /* resultToDisplay: function() {
+      console.log("resultToDisplay method is invoked");
+      if (this.result < 0) {
+        return `(${this.result})`;
+      } else {
+        return this.result;
+      }
+    } */
+  },
+  created: function() {}
 };
 </script>
 
