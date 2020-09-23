@@ -3,12 +3,11 @@
     <h3>Calculator</h3>
     <input type="number" v-model.number="number1" />
     <select v-model="operator">
-      <!-- 
-        <option v-for="(value,key) in operators" v-bind:value="value" v-bind:key="key">
-          {{key}}
-        </option> 
-      -->
-      <option v-for="(value,key) in operators" :value="value" :key="key">{{key}}</option>
+      <option
+        v-for="(op,index) in operators"
+        v-bind:value="op.value"
+        v-bind:key="index"
+      >{{op.displayText}}</option>
     </select>
     <input type="number" v-model.number="number2" />
     <br />
@@ -31,22 +30,14 @@ export default {
       number1: 0,
       number2: 0,
       operator: "",
-      operators: {
-        "--Select--": "",
-        Add: "add",
-        Subtract: "subtract",
-        Multiply: "multiply",
-        Divide: "divide",
-        "To Power": "power"
-      }
-      /* operators: [
+      operators: [
         { value: "", displayText: "-- Select --" },
         { value: "add", displayText: "Add" },
         { value: "subtract", displayText: "Subtract" },
         { value: "multiply", displayText: "Multiply" },
         { value: "divide", displayText: "Divide" },
         { value: "power", displayText: "To Power" }
-      ] */
+      ]
     };
   },
   computed: {
