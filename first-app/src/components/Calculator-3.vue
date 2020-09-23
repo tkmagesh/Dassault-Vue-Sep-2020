@@ -2,7 +2,7 @@
   <div>
     <h3>Calculator</h3>
     <input type="number" v-model.number="number1" />
-    <select @change="onCalculate($event)">
+    <select v-model="operator" @change="onCalculate()">
       <option value>- select -</option>
       <option value="add">Add</option>
       <option value="subtract">Subtract</option>
@@ -27,12 +27,13 @@ export default {
     return {
       number1: 0,
       number2: 0,
+      operator: "",
       result: 0
     };
   },
   methods: {
-    onCalculate: function(evt) {
-      switch (evt.target.value) {
+    onCalculate: function() {
+      switch (this.operator) {
         case "add":
           this.result = this.number1 + this.number2;
           break;
