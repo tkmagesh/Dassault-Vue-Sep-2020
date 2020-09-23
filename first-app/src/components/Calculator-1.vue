@@ -2,15 +2,12 @@
   <div>
     <h3>Calculator</h3>
     <input type="number" v-model.number="number1" />
-    <select name id>
-      <option value="add">Add</option>
-      <option value="subtract">Subtract</option>
-      <option value="multiply">Multiply</option>
-      <option value="divide">Divide</option>
-    </select>
     <input type="number" v-model.number="number2" />
-    <input type="button" value="Calculate" />
     <br />
+    <input type="button" value="Add" @click="onAdd()" />
+    <input type="button" value="Subtract" @click="onSubtract()" />
+    <input type="button" value="Multiply" @click="onMultiply()" />
+    <input type="button" value="Divide" @click="onDivide()" />
     <div
       v-bind:class="{ 
         positive : result >= 0, 

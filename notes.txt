@@ -79,3 +79,11 @@ ES Modules
 
 Study: 
     Array Methods : map, forEach, reduce, filter
+
+
+
+Zen Coding :
+    html:5
+    h1#top-heading.heading[title="Document heading"]{App Document}*2
+    div+p
+    ol>li*3{Item-$}
