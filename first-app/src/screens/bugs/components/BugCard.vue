@@ -1,7 +1,11 @@
 <template>
   <li>
-    <span class="bugname" :class="{closed : bug.isClosed}" @click="onBugNameClick()">{{bug.name}}</span>
-    <p>{{bug.desc}}</p>
+    <span
+      class="bugname"
+      :class="{closed : bug.isClosed}"
+      @click="onBugNameClick()"
+    >{{bug.name | trimText }}</span>
+    <p>{{ bug.desc | trimText(80) }}</p>
     <div class="datetime">{{bug.createdAt}}</div>
     <input type="button" value="Remove" :disabled="!bug.isClosed" @click="onRemoveClick(bug)" />
   </li>
@@ -11,7 +15,10 @@
 export default {
   name: "BugCard",
   props: {
-    bug: Object
+    bug: {
+      type: Object,
+      required: true
+    }
   },
   methods: {
     onBugNameClick: function() {
@@ -20,7 +27,14 @@ export default {
     onRemoveClick: function(bug) {
       this.$emit("remove", bug);
     }
-  }
+  } /* ,
+  filters: {
+    trimText: function(text, maxLength = 40) {
+      return text.length <= maxLength
+        ? text
+        : text.substr(0, maxLength) + "...";
+    }
+  } */
 };
 </script>
 

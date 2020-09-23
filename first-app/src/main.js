@@ -21,6 +21,10 @@ import { add } from './calculator';
 /* import calc from './calculator';
 console.log(calc); */
 
+Vue.filter("trimText", function(text, maxLength = 40) {
+  return text.length <= maxLength ? text : text.substr(0, maxLength) + "...";
+});
+
 Vue.config.productionTip = false;
 
 new Vue({
