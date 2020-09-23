@@ -2,21 +2,9 @@
   <div>
     <h1>Bug Tracker</h1>
     <hr />
-    <section class="stats">
-      <span class="closed">1</span>
-      <span>/</span>
-      <span>2</span>
-    </section>
-    <section class="sort">
-      <label for>Order By :</label>
-      <select name id>
-        <option value></option>
-        <option value></option>
-        <option value></option>
-      </select>
-      <label for>descending ? :</label>
-      <input type="checkbox" name id />
-    </section>
+    <BugStats :data="list" />
+    <BugSort />
+
     <section class="edit">
       <div class="field">
         <label for>Bug Name :</label>
@@ -45,14 +33,21 @@
           <input type="button" value="Remove" :disabled="!bug.isClosed" @click="onRemoveClick(bug)" />
         </li>
       </ol>
-      <input type="button" value="Remove Closed" />
+      <input type="button" value="Remove Closed" @click="onRemoveClosedClick" />
     </section>
   </div>
 </template>
 
 <script>
+import BugSort from "./components/BugSort.vue";
+import BugStats from "./components/BugStats.vue";
+
 export default {
   name: "BugTracker",
+  components: {
+    BugSort,
+    BugStats
+  },
   data: function() {
     return {
       newBugData: {
@@ -88,6 +83,9 @@ export default {
       //this.list.splice(this.list.indexOf(bugToRemove), 1);
       this.list = this.list.filter(bug => bug.id !== bugToRemove.id);
     },
+    onRemoveClosedClick: function() {
+      this.list = this.list.filter(bug => !bug.isClosed);
+    },
     onAddNewClick: function() {
       const newBugId =
         this.list.reduce(
@@ -105,6 +103,13 @@ export default {
   computed: {
     truncatedDesc: function(data) {
       return data.length <= 80 ? data : data.substr(0, 80) + "...";
+    },
+    closedCount: function() {
+      //return this.list.filter(bug => bug.isClosed).length;
+      return this.list.reduce(
+        (result, bug) => (bug.isClosed ? result + 1 : result),
+        0
+      );
     }
   }
 };
