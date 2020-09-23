@@ -4,22 +4,7 @@
     <hr />
     <BugStats :data="list" />
     <BugSort />
-
-    <section class="edit">
-      <div class="field">
-        <label for>Bug Name :</label>
-        <input type="text" v-model="newBugData.name" />
-      </div>
-      <div class="field">
-        <label for>Description :</label>
-        <textarea rows="5" cols="80" v-model="newBugData.desc"></textarea>
-      </div>
-      <div class="field">
-        <label for>Closed ? :</label>
-        <input type="checkbox" v-model="newBugData.isClosed" />
-      </div>
-      <input type="button" value="Add New" @click="onAddNewClick" />
-    </section>
+    <BugEdit @newBug="onNewBugAdded" />
     <section class="list">
       <ol>
         <li v-for="bug in list" :key="bug.id">
@@ -41,12 +26,14 @@
 <script>
 import BugSort from "./components/BugSort.vue";
 import BugStats from "./components/BugStats.vue";
+import BugEdit from "./components/BugEdit.vue";
 
 export default {
   name: "BugTracker",
   components: {
     BugSort,
-    BugStats
+    BugStats,
+    BugEdit
   },
   data: function() {
     return {
@@ -86,14 +73,14 @@ export default {
     onRemoveClosedClick: function() {
       this.list = this.list.filter(bug => !bug.isClosed);
     },
-    onAddNewClick: function() {
+    onNewBugAdded: function(newBugData) {
       const newBugId =
         this.list.reduce(
           (result, bug) => (result > bug.id ? result : bug.id),
           0
         ) + 1;
       const newBug = {
-        ...this.newBugData,
+        ...newBugData,
         id: newBugId,
         createdAt: new Date()
       };
@@ -103,13 +90,6 @@ export default {
   computed: {
     truncatedDesc: function(data) {
       return data.length <= 80 ? data : data.substr(0, 80) + "...";
-    },
-    closedCount: function() {
-      //return this.list.filter(bug => bug.isClosed).length;
-      return this.list.reduce(
-        (result, bug) => (bug.isClosed ? result + 1 : result),
-        0
-      );
     }
   }
 };
