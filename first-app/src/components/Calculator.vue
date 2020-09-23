@@ -16,7 +16,7 @@
         positive : result >= 0, 
         negative : result < 0
       }"
-    >{{result}}</div>
+    >{{resultToDisplay}}</div>
   </div>
 </template>
 
@@ -29,6 +29,15 @@ export default {
       number2: 0,
       result: 0
     };
+  },
+  computed: {
+    resultToDisplay: function() {
+      if (this.result < 0) {
+        return `(${this.result})`;
+      } else {
+        return this.result;
+      }
+    }
   },
   methods: {
     onCalculate: function(evt) {
