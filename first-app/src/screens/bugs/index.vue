@@ -7,16 +7,7 @@
     <BugEdit @newBug="onNewBugAdded" />
     <section class="list">
       <ol>
-        <li v-for="bug in list" :key="bug.id">
-          <span
-            class="bugname"
-            :class="{closed : bug.isClosed}"
-            @click="onBugNameClick(bug)"
-          >{{bug.name}}</span>
-          <p>{{bug.desc}}</p>
-          <div class="datetime">{{bug.createdAt}}</div>
-          <input type="button" value="Remove" :disabled="!bug.isClosed" @click="onRemoveClick(bug)" />
-        </li>
+        <BugCard v-for="bug in list" :key="bug.id" :bug="bug" @remove="onRemove" />
       </ol>
       <input type="button" value="Remove Closed" @click="onRemoveClosedClick" />
     </section>
@@ -27,13 +18,15 @@
 import BugSort from "./components/BugSort.vue";
 import BugStats from "./components/BugStats.vue";
 import BugEdit from "./components/BugEdit.vue";
+import BugCard from "./components/BugCard.vue";
 
 export default {
   name: "BugTracker",
   components: {
     BugSort,
     BugStats,
-    BugEdit
+    BugEdit,
+    BugCard
   },
   data: function() {
     return {
@@ -66,7 +59,7 @@ export default {
     onBugNameClick: function(bug) {
       bug.isClosed = !bug.isClosed;
     },
-    onRemoveClick: function(bugToRemove) {
+    onRemove: function(bugToRemove) {
       //this.list.splice(this.list.indexOf(bugToRemove), 1);
       this.list = this.list.filter(bug => bug.id !== bugToRemove.id);
     },
