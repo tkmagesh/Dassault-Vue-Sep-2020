@@ -35,7 +35,11 @@
     <section class="list">
       <ol>
         <li v-for="bug in list" :key="bug.id">
-          <span class="bugname" :class="{closed : bug.isClosed}">{{bug.name}}</span>
+          <span
+            class="bugname"
+            :class="{closed : bug.isClosed}"
+            @click="onBugNameClick(bug)"
+          >{{bug.name}}</span>
           <p>{{bug.desc}}</p>
           <div class="datetime">{{bug.createdAt}}</div>
           <input type="button" value="Remove" />
@@ -77,6 +81,9 @@ export default {
     };
   },
   methods: {
+    onBugNameClick: function(bug) {
+      bug.isClosed = !bug.isClosed;
+    },
     onAddNewClick: function() {
       const newBugId =
         this.list.reduce(
