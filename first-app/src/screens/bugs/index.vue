@@ -7,7 +7,12 @@
     <BugEdit @newBug="onNewBugAdded" />
     <section class="list">
       <ol>
-        <BugCard v-for="bug in list" :key="bug.id" :bug="bug" @remove="onRemove" />
+        <BugCard
+          v-for="bug in list"
+          :key="bug.id"
+          :bug="bug"
+          @remove="onRemove"
+        />
       </ol>
       <input type="button" value="Remove Closed" @click="onRemoveClosedClick" />
     </section>
@@ -19,6 +24,7 @@ import BugSort from "./components/BugSort.vue";
 import BugStats from "./components/BugStats.vue";
 import BugEdit from "./components/BugEdit.vue";
 import BugCard from "./components/BugCard.vue";
+import bugApi from "./services/bugApi";
 
 export default {
   name: "BugTracker",
@@ -35,25 +41,11 @@ export default {
         desc: "",
         isClosed: false
       },
-      list: [
-        {
-          id: 1,
-          name: "Server communication failure",
-          desc:
-            "Aliqua non aliquip id anim labore culpa eiusmod magna voluptate exercitation excepteur mollit. Consequat ipsum consectetur tempor cupidatat non enim ex. Amet non excepteur eu laboris id dolor ad magna ut sit adipisicing duis. Magna ad velit nulla laboris proident in. Cillum ea dolor occaecat sunt ullamco anim consectetur qui elit minim qui officia officia. Labore in aliqua veniam est ex minim excepteur ut culpa nulla exercitation laboris do eiusmod. Officia velit dolore Lorem culpa fugiat mollit dolor voluptate eu non tempor.",
-          isClosed: true,
-          createdAt: new Date()
-        },
-        {
-          id: 2,
-          name: "User actions not recognized",
-          desc:
-            "Sint adipisicing officia laboris nulla qui elit dolore adipisicing occaecat ut. Aute commodo laboris exercitation qui irure magna et pariatur occaecat anim aute. Lorem occaecat non irure culpa laboris aliquip nulla sit anim dolor. Adipisicing commodo culpa aliquip dolore do. Ipsum quis fugiat laboris magna qui reprehenderit nisi amet commodo voluptate consequat duis. Ullamco exercitation eu id mollit velit eiusmod occaecat velit veniam non nisi sit.",
-          isClosed: true,
-          createdAt: new Date()
-        }
-      ]
+      list: []
     };
+  },
+  mounted: function() {
+    bugApi.getAll().then(bugs => (this.list = bugs));
   },
   methods: {
     onBugNameClick: function(bug) {
