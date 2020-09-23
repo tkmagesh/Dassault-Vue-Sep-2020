@@ -87,3 +87,8 @@ Zen Coding :
     h1#top-heading.heading[title="Document heading"]{App Document}*2
     div+p
     ol>li*3{Item-$}
+
+
+truthy & falsy
+
+null, undefined, NaN, '', 0, false  -> falsy
