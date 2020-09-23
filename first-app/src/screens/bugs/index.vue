@@ -20,34 +20,24 @@
     <section class="edit">
       <div class="field">
         <label for>Bug Name :</label>
-        <input type="text" name id />
+        <input type="text" v-model="newBugData.name" />
       </div>
       <div class="field">
         <label for>Description :</label>
-        <textarea rows="5" cols="80"></textarea>
+        <textarea rows="5" cols="80" v-model="newBugData.desc"></textarea>
       </div>
-      <input type="button" value="Add New" />
+      <div class="field">
+        <label for>Closed ? :</label>
+        <input type="checkbox" v-model="newBugData.isClosed" />
+      </div>
+      <input type="button" value="Add New" @click="onAddNewClick" />
     </section>
     <section class="list">
       <ol>
-        <li>
-          <span class="bugname closed">[This is bug - 1]</span>
-          <p>
-            Minim sint officia officia sit officia enim commodo non nostrud duis.
-            Qui dolore Lorem labore nisi. Nostrud exercitation nisi aute laborum
-            nulla nostrud eiusmod dolore duis et.
-          </p>
-          <div class="datetime">[Created At]</div>
-          <input type="button" value="Remove" />
-        </li>
-        <li>
-          <span class="bugname">[This is bug - 2]</span>
-          <p>
-            Minim sint officia officia sit officia enim commodo non nostrud duis.
-            Qui dolore Lorem labore nisi. Nostrud exercitation nisi aute laborum
-            nulla nostrud eiusmod dolore duis et.
-          </p>
-          <div class="datetime">[Created At]</div>
+        <li v-for="bug in list" :key="bug.id">
+          <span class="bugname" :class="{closed : bug.isClosed}">{{bug.name}}</span>
+          <p>{{bug.desc}}</p>
+          <div class="datetime">{{bug.createdAt}}</div>
           <input type="button" value="Remove" />
         </li>
       </ol>
@@ -58,7 +48,54 @@
 
 <script>
 export default {
-  name: "BugTracker"
+  name: "BugTracker",
+  data: function() {
+    return {
+      newBugData: {
+        name: "",
+        desc: "",
+        isClosed: false
+      },
+      list: [
+        {
+          id: 1,
+          name: "Server communication failure",
+          desc:
+            "Aliqua non aliquip id anim labore culpa eiusmod magna voluptate exercitation excepteur mollit. Consequat ipsum consectetur tempor cupidatat non enim ex. Amet non excepteur eu laboris id dolor ad magna ut sit adipisicing duis. Magna ad velit nulla laboris proident in. Cillum ea dolor occaecat sunt ullamco anim consectetur qui elit minim qui officia officia. Labore in aliqua veniam est ex minim excepteur ut culpa nulla exercitation laboris do eiusmod. Officia velit dolore Lorem culpa fugiat mollit dolor voluptate eu non tempor.",
+          isClosed: true,
+          createdAt: new Date()
+        },
+        {
+          id: 2,
+          name: "User actions not recognized",
+          desc:
+            "Sint adipisicing officia laboris nulla qui elit dolore adipisicing occaecat ut. Aute commodo laboris exercitation qui irure magna et pariatur occaecat anim aute. Lorem occaecat non irure culpa laboris aliquip nulla sit anim dolor. Adipisicing commodo culpa aliquip dolore do. Ipsum quis fugiat laboris magna qui reprehenderit nisi amet commodo voluptate consequat duis. Ullamco exercitation eu id mollit velit eiusmod occaecat velit veniam non nisi sit.",
+          isClosed: true,
+          createdAt: new Date()
+        }
+      ]
+    };
+  },
+  methods: {
+    onAddNewClick: function() {
+      const newBugId =
+        this.list.reduce(
+          (result, bug) => (result > bug.id ? result : bug.id),
+          0
+        ) + 1;
+      const newBug = {
+        ...this.newBugData,
+        id: newBugId,
+        createdAt: new Date()
+      };
+      this.list.push(newBug);
+    }
+  },
+  computed: {
+    truncatedDesc: function(data) {
+      return data.length <= 80 ? data : data.substr(0, 80) + "...";
+    }
+  }
 };
 </script>
 

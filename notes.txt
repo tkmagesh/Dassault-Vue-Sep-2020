@@ -92,3 +92,16 @@ Zen Coding :
 truthy & falsy
 
 null, undefined, NaN, '', 0, false  -> falsy
+
+
+Bug Tracker
+1. Add bugs
+2. List the added bugs
+3. Toggle the 'closed' status of any bug
+4. Remove any bug
+5. Remove 'closed' bugs
+6. Display stats ( # of closed bugs / total # of bugs)
+7. Sort the bugs (assignment)
+8. Persist the bugs in the server
+9. Make the bugs accessible using unique urls (routing)
+
