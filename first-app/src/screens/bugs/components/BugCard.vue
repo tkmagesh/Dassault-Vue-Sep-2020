@@ -2,16 +2,24 @@
   <li>
     <span
       class="bugname"
-      :class="{closed : bug.isClosed}"
+      :class="{ closed: bug.isClosed }"
       @click="onBugNameClick()"
-    >{{bug.name | trimText }}</span>
+      >{{ bug.name | trimText }}</span
+    >
     <p>{{ bug.desc | trimText(80) }}</p>
-    <div class="datetime">{{bug.createdAt}}</div>
-    <input type="button" value="Remove" :disabled="!bug.isClosed" @click="onRemoveClick(bug)" />
+    <div class="datetime">{{ bug.createdAt }}</div>
+    <input
+      type="button"
+      value="Remove"
+      :disabled="!bug.isClosed"
+      @click="onRemoveClick(bug)"
+    />
   </li>
 </template>
 
 <script>
+import bugApi from "../services/bugApi";
+
 export default {
   name: "BugCard",
   props: {
@@ -23,9 +31,12 @@ export default {
   methods: {
     onBugNameClick: function() {
       this.bug.isClosed = !this.bug.isClosed;
+      bugApi.save(this.bug);
     },
     onRemoveClick: function(bug) {
-      this.$emit("remove", bug);
+      bugApi.remove(bug).then(() => {
+        this.$emit("remove", bug);
+      });
     }
   } /* ,
   filters: {
@@ -38,5 +49,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

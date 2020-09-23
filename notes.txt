@@ -105,3 +105,38 @@ Bug Tracker
 8. Persist the bugs in the server
 9. Make the bugs accessible using unique urls (routing)
 
+json-server
+    expose the data from a json file as restful endpoints
+
+    npx json-server db.json
+
+axios
+
+
+Asynchronous Operations
+    Non Blocking (intitiated but not waited for its completion)
+
+    Callbacks
+    Event Emitter
+    Promise
+    Async Await
+    Generators
+    rxjs Observables
+
+var p2 = p.then(function(){
+    //async operation;
+    return result;
+});
+
+var p3 = p2.then(function(result){
+    //do some other processing;
+    return newResult;
+})
+
+p.then(function(){
+    return result;
+}).then(function(result){
+    return newResult;
+}).then(function(newResult){
+    display(newResult);
+})

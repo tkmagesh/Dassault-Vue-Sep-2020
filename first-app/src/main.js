@@ -1,7 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 
-import axios from "axios";
+//import axios from "axios";
 
 /* 
 var p = axios.get("http://localhost:3000/bugs");
@@ -22,10 +22,10 @@ p2.then(function(bugs) {
     console.table(bugs);
   }); */
 
-axios
+/* axios
   .get("http://localhost:3000/bugs")
   .then(response => response.data)
-  .then(bugs => console.table(bugs));
+  .then(bugs => console.table(bugs)); */
 
 /* 
 import * as calc from './calculator';

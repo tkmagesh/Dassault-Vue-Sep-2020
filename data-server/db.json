@@ -1,20 +1,5 @@
 {
-  "bugs": [
-    {
-      "id": 1,
-      "name": "Server communication failure",
-      "desc": "Reprehenderit deserunt veniam quis incididunt minim. Tempor anim proident ex quis duis magna commodo veniam deserunt reprehenderit proident aliqua. Eiusmod quis excepteur amet amet. Ad commodo dolor ad laboris incididunt aliqua.",
-      "isClosed": false,
-      "createdAt": "2020-07-27T09:03:47.853Z"
-    },
-    {
-      "id": 2,
-      "name": "Data integrity checks failed",
-      "desc": "Id do esse anim ut commodo duis officia dolore. Velit sint eiusmod id aliquip qui ipsum consequat ex sint minim anim officia nisi exercitation. Amet reprehenderit cillum consectetur sunt sint amet enim. Esse adipisicing occaecat labore sit ea deserunt fugiat deserunt officia. Pariatur eiusmod dolor quis proident amet minim.",
-      "isClosed": false,
-      "createdAt": "2020-07-27T09:04:00.876Z"
-    }
-  ],
+  "bugs": [],
   "projects": [
     {
       "id": 1,

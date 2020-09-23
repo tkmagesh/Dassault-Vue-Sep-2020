@@ -17,24 +17,28 @@
 </template>
 
 <script>
+import bugApi from "../services/bugApi";
 export default {
   name: "BugEdit",
   data: function() {
     return {
       newBugData: {
+        id: 0,
         name: "",
         desc: "",
+        createdAt: new Date(),
         isClosed: false
       }
     };
   },
   methods: {
     onAddNewClick: function() {
-      this.$emit("newBug", this.newBugData);
+      bugApi.save(this.newBugData).then(newBug => {
+        this.$emit("newBug", newBug);
+      });
     }
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>

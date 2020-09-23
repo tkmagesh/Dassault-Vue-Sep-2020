@@ -56,19 +56,15 @@ export default {
       this.list = this.list.filter(bug => bug.id !== bugToRemove.id);
     },
     onRemoveClosedClick: function() {
-      this.list = this.list.filter(bug => !bug.isClosed);
+      this.list
+        .filter(bug => bug.isClosed)
+        .forEach(closedBug => {
+          bugApi.remove(closedBug).then(() => {
+            this.onRemove(closedBug);
+          });
+        });
     },
-    onNewBugAdded: function(newBugData) {
-      const newBugId =
-        this.list.reduce(
-          (result, bug) => (result > bug.id ? result : bug.id),
-          0
-        ) + 1;
-      const newBug = {
-        ...newBugData,
-        id: newBugId,
-        createdAt: new Date()
-      };
+    onNewBugAdded: function(newBug) {
       this.list.push(newBug);
     }
   },
