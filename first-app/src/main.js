@@ -1,6 +1,32 @@
 import Vue from "vue";
 import App from "./App.vue";
 
+import axios from "axios";
+
+/* 
+var p = axios.get("http://localhost:3000/bugs");
+var p2 = p.then(function(response) {
+  return response.data;
+});
+p2.then(function(bugs) {
+  console.table(bugs);
+}); 
+*/
+
+/* axios
+  .get("http://localhost:3000/bugs")
+  .then(function(response) {
+    return response.data;
+  })
+  .then(function(bugs) {
+    console.table(bugs);
+  }); */
+
+axios
+  .get("http://localhost:3000/bugs")
+  .then(response => response.data)
+  .then(bugs => console.table(bugs));
+
 /* 
 import * as calc from './calculator';
 console.log(calc); 
