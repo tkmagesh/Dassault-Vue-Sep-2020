@@ -42,7 +42,7 @@
           >{{bug.name}}</span>
           <p>{{bug.desc}}</p>
           <div class="datetime">{{bug.createdAt}}</div>
-          <input type="button" value="Remove" />
+          <input type="button" value="Remove" :disabled="!bug.isClosed" @click="onRemoveClick(bug)" />
         </li>
       </ol>
       <input type="button" value="Remove Closed" />
@@ -83,6 +83,10 @@ export default {
   methods: {
     onBugNameClick: function(bug) {
       bug.isClosed = !bug.isClosed;
+    },
+    onRemoveClick: function(bugToRemove) {
+      //this.list.splice(this.list.indexOf(bugToRemove), 1);
+      this.list = this.list.filter(bug => bug.id !== bugToRemove.id);
     },
     onAddNewClick: function() {
       const newBugId =
