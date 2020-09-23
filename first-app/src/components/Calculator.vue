@@ -11,12 +11,14 @@
     </select>
     <input type="number" v-model.number="number2" />
     <br />
-    <div
+    <div v-if="operator === ''">[Select the operator]</div>
+    <span
+      v-else
       v-bind:class="{ 
         positive : result >= 0, 
         negative : result < 0
       }"
-    >{{ resultToDisplay }}</div>
+    >{{ resultToDisplay }}</span>
   </div>
 </template>
 
