@@ -140,3 +140,12 @@ p.then(function(){
 }).then(function(newResult){
     display(newResult);
 })
+
+State
+    UI State (It is ok to keep in the component)
+        Supports the presentation needs of the application
+        It is highly unlikely that this data would be needed in other parts of the application
+
+    Application State (DONT KEEP IT IN THE COMPONENT)
+        Supports the business logic of the application
+        It is highly likely that this data would be needed in other parts of the application

@@ -1,5 +1,7 @@
 import axios from "axios";
 
+window["axios"] = axios;
+
 const serviceEndPoint = "http://localhost:3000/bugs";
 
 async function getAll() {
