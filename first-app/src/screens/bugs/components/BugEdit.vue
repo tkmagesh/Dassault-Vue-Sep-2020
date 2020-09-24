@@ -17,7 +17,8 @@
 </template>
 
 <script>
-import bugApi from "../services/bugApi";
+import { mapActions } from "vuex";
+
 export default {
   name: "BugEdit",
   data: function() {
@@ -32,9 +33,9 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["addNew"]),
     onAddNewClick: async function() {
-      const newBug = await bugApi.save(this.newBugData);
-      this.$emit("newBug", newBug);
+      this.addNew(this.newBugData);
     }
   }
 };

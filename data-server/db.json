@@ -7,9 +7,24 @@
       "createdAt": "2020-09-24T13:30:58.955Z",
       "isClosed": false,
       "images": {
-        "published": ["image-A", "image-B", "image-C"],
-        "unpublished": ["image-UA", "image-UB", "image-UC"]
+        "published": [
+          "image-A",
+          "image-B",
+          "image-C"
+        ],
+        "unpublished": [
+          "image-UA",
+          "image-UB",
+          "image-UC"
+        ]
       }
+    },
+    {
+      "id": 2,
+      "name": "Data integrity checks failed",
+      "desc": "Reprehenderit sit sint ut ullamco in. Duis labore aliqua pariatur ea dolor ad. Ad mollit labore in irure in incididunt enim occaecat eiusmod aute duis proident. Anim tempor adipisicing laboris in aliquip incididunt. Consectetur est nisi adipisicing mollit fugiat excepteur duis sit ad amet elit eu sit. Exercitation pariatur veniam cillum amet magna ad nisi ut exercitation aliqua sit officia.",
+      "createdAt": "2020-09-24T15:33:41.799Z",
+      "isClosed": true
     }
   ],
   "projects": [

@@ -13,12 +13,19 @@ const store = new Vuex.Store({
   mutations: {
     initBugs: function(state, bugs) {
       state.list = bugs;
+    },
+    addBug: function(state, newBug) {
+      state.list.push(newBug);
     }
   },
   actions: {
     loadBugs: async function(context) {
       const bugs = await bugApi.getAll();
       context.commit("initBugs", bugs);
+    },
+    addNew: async function(context, newBugData) {
+      const newBug = await bugApi.save(newBugData);
+      context.commit("addBug", newBug);
     }
   }
 });
