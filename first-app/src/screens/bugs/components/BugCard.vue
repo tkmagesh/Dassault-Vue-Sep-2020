@@ -14,6 +14,10 @@
       :disabled="!bug.isClosed"
       @click="remove(bug)"
     />
+    <br />
+    <router-link :to="{ name: 'bugDetails', params: { id: bug.id } }">
+      More ...
+    </router-link>
   </li>
 </template>
 

@@ -3,6 +3,8 @@ import App from "./App.vue";
 import store from "./store";
 import BugTracker from "./screens/bugs";
 import BugEdit from "./screens/bugs/components/BugEdit.vue";
+import BugDetails from "./screens/bugs/components/BugDetails.vue";
+
 import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
@@ -12,6 +14,11 @@ const routes = [
     name: "bugs",
     path: "/bugs",
     component: BugTracker
+  },
+  {
+    name: "bugDetails",
+    path: "/bugs/:id",
+    component: BugDetails
   },
   {
     name: "default",
