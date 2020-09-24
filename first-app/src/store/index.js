@@ -16,16 +16,29 @@ const store = new Vuex.Store({
     },
     addBug: function(state, newBug) {
       state.list.push(newBug);
+    },
+    removeBug: function(state, bugToRemove) {
+      state.list.splice(state.list.indexOf(bugToRemove), 1);
+    },
+    replaceBug: function(state, updatedBug) {
+      state.list = state.list.map(bug =>
+        bug.id === updatedBug.id ? updatedBug : bug
+      );
     }
   },
   actions: {
-    loadBugs: async function(context) {
-      const bugs = await bugApi.getAll();
-      context.commit("initBugs", bugs);
-    },
-    addNew: async function(context, newBugData) {
-      const newBug = await bugApi.save(newBugData);
-      context.commit("addBug", newBug);
+    loadBugs: ,
+    addNew: ,
+    remove: ,
+    toggle: ,
+    removeClosed: async function(context) {
+      const currentBugs = context.state.list;
+      currentBugs
+        .filter(bug => bug.isClosed)
+        .forEach(async closedBug => {
+          await bugApi.remove(closedBug);
+          context.commit("removeBug", closedBug);
+        });
     }
   }
 });

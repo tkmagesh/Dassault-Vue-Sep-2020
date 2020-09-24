@@ -1,30 +1,18 @@
 {
   "bugs": [
     {
-      "id": 1,
-      "name": "Server communication failure",
-      "desc": "Laborum mollit exercitation ea quis sunt enim sit laboris ea id cupidatat labore sint laborum. Eiusmod fugiat ea et dolore. Mollit tempor exercitation minim amet occaecat ipsum sit aute ad magna elit ullamco eiusmod fugiat.",
-      "createdAt": "2020-09-24T13:30:58.955Z",
-      "isClosed": false,
-      "images": {
-        "published": [
-          "image-A",
-          "image-B",
-          "image-C"
-        ],
-        "unpublished": [
-          "image-UA",
-          "image-UB",
-          "image-UC"
-        ]
-      }
+      "id": 5,
+      "name": "Bug - 5",
+      "desc": "",
+      "createdAt": "2020-09-24T16:10:49.623Z",
+      "isClosed": false
     },
     {
-      "id": 2,
-      "name": "Data integrity checks failed",
-      "desc": "Reprehenderit sit sint ut ullamco in. Duis labore aliqua pariatur ea dolor ad. Ad mollit labore in irure in incididunt enim occaecat eiusmod aute duis proident. Anim tempor adipisicing laboris in aliquip incididunt. Consectetur est nisi adipisicing mollit fugiat excepteur duis sit ad amet elit eu sit. Exercitation pariatur veniam cillum amet magna ad nisi ut exercitation aliqua sit officia.",
-      "createdAt": "2020-09-24T15:33:41.799Z",
-      "isClosed": true
+      "id": 6,
+      "name": "Bug - 6",
+      "desc": "",
+      "createdAt": "2020-09-24T16:16:28.070Z",
+      "isClosed": false
     }
   ],
   "projects": [

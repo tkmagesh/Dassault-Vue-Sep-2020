@@ -3,16 +3,22 @@
     <span
       class="bugname"
       :class="{ closed: bug.isClosed }"
-      @click="onBugNameClick()"
-    >{{ bug.name | trimText }}</span>
+      @click="toggle(bug)"
+      >{{ bug.name | trimText }}</span
+    >
     <p>{{ bug.desc | trimText(80) }}</p>
     <div class="datetime">{{ bug.createdAt }}</div>
-    <input type="button" value="Remove" :disabled="!bug.isClosed" @click="onRemoveClick(bug)" />
+    <input
+      type="button"
+      value="Remove"
+      :disabled="!bug.isClosed"
+      @click="remove(bug)"
+    />
   </li>
 </template>
 
 <script>
-import bugApi from "../services/bugApi";
+import { mapActions } from "vuex";
 
 export default {
   name: "BugCard",
@@ -22,23 +28,7 @@ export default {
       required: true
     }
   },
-  methods: {
-    onBugNameClick: async function() {
-      this.bug.isClosed = !this.bug.isClosed;
-      await bugApi.save(this.bug);
-    },
-    onRemoveClick: async function(bug) {
-      await bugApi.remove(bug);
-      this.$emit("remove", bug);
-    }
-  } /* ,
-  filters: {
-    trimText: function(text, maxLength = 40) {
-      return text.length <= maxLength
-        ? text
-        : text.substr(0, maxLength) + "...";
-    }
-  } */
+  methods: mapActions(["remove", "toggle"])
 };
 </script>
 

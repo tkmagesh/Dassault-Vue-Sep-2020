@@ -4,17 +4,12 @@
     <hr />
     <BugStats :data="list" />
     <BugSort />
-    <BugEdit @newBug="onNewBugAdded" />
+    <BugEdit />
     <section class="list">
       <ol>
-        <BugCard
-          v-for="bug in list"
-          :key="bug.id"
-          :bug="bug"
-          @remove="onRemove"
-        />
+        <BugCard v-for="bug in list" :key="bug.id" :bug="bug" />
       </ol>
-      <input type="button" value="Remove Closed" @click="onRemoveClosedClick" />
+      <input type="button" value="Remove Closed" @click="removeClosed" />
     </section>
   </div>
 </template>
@@ -24,7 +19,7 @@ import BugSort from "./components/BugSort.vue";
 import BugStats from "./components/BugStats.vue";
 import BugEdit from "./components/BugEdit.vue";
 import BugCard from "./components/BugCard.vue";
-import bugApi from "./services/bugApi";
+
 import { mapState, mapActions } from "vuex";
 
 export default {
@@ -47,27 +42,7 @@ export default {
   mounted: async function() {
     this.loadBugs();
   },
-  methods: {
-    ...mapActions(["loadBugs"]),
-    onBugNameClick: function(bug) {
-      bug.isClosed = !bug.isClosed;
-    },
-    onRemove: function(bugToRemove) {
-      //this.list.splice(this.list.indexOf(bugToRemove), 1);
-      this.list = this.list.filter(bug => bug.id !== bugToRemove.id);
-    },
-    onRemoveClosedClick: function() {
-      this.list
-        .filter(bug => bug.isClosed)
-        .forEach(async closedBug => {
-          await bugApi.remove(closedBug);
-          this.onRemove(closedBug);
-        });
-    },
-    onNewBugAdded: function(newBug) {
-      this.list.push(newBug);
-    }
-  },
+  methods: mapActions(["loadBugs", "removeClosed"]),
   computed: {
     ...mapState({
       list: state => state.list
