@@ -32,10 +32,9 @@ export default {
     };
   },
   methods: {
-    onAddNewClick: function() {
-      bugApi.save(this.newBugData).then(newBug => {
-        this.$emit("newBug", newBug);
-      });
+    onAddNewClick: async function() {
+      const newBug = await bugApi.save(this.newBugData);
+      this.$emit("newBug", newBug);
     }
   }
 };

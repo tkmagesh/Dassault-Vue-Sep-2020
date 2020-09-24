@@ -2,30 +2,32 @@ import axios from "axios";
 
 const serviceEndPoint = "http://localhost:3000/bugs";
 
-function getAll() {
-  return axios.get(serviceEndPoint).then(response => response.data);
+async function getAll() {
+  const response = await axios.get(serviceEndPoint);
+  return response.data;
 }
 
-function getById(id) {
-  return axios.get(`${serviceEndPoint}/${id}`).then(response => response.data);
+async function getById(id) {
+  const response = axios.get(`${serviceEndPoint}/${id}`);
+  return response.data;
 }
 
-function save(bugData) {
+async function save(bugData) {
   if (bugData.id === 0) {
-    return axios
-      .post(`${serviceEndPoint}`, bugData)
-      .then(response => response.data);
+    const response = await axios.post(`${serviceEndPoint}`, bugData);
+    return response.data;
   } else {
-    return axios
-      .put(`${serviceEndPoint}/${bugData.id}`, bugData)
-      .then(response => response.data);
+    const response = await axios.put(
+      `${serviceEndPoint}/${bugData.id}`,
+      bugData
+    );
+    return response.data;
   }
 }
 
-function remove(bug) {
-  return axios
-    .delete(`${serviceEndPoint}/${bug.id}`)
-    .then(response => response.data);
+async function remove(bug) {
+  const response = await axios.delete(`${serviceEndPoint}/${bug.id}`);
+  return response.data;
 }
 
 export default {

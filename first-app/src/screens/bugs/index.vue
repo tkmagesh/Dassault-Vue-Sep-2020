@@ -7,12 +7,7 @@
     <BugEdit @newBug="onNewBugAdded" />
     <section class="list">
       <ol>
-        <BugCard
-          v-for="bug in list"
-          :key="bug.id"
-          :bug="bug"
-          @remove="onRemove"
-        />
+        <BugCard v-for="bug in list" :key="bug.id" :bug="bug" @remove="onRemove" />
       </ol>
       <input type="button" value="Remove Closed" @click="onRemoveClosedClick" />
     </section>
@@ -44,8 +39,8 @@ export default {
       list: []
     };
   },
-  mounted: function() {
-    bugApi.getAll().then(bugs => (this.list = bugs));
+  mounted: async function() {
+    this.list = await bugApi.getAll();
   },
   methods: {
     onBugNameClick: function(bug) {
@@ -58,10 +53,9 @@ export default {
     onRemoveClosedClick: function() {
       this.list
         .filter(bug => bug.isClosed)
-        .forEach(closedBug => {
-          bugApi.remove(closedBug).then(() => {
-            this.onRemove(closedBug);
-          });
+        .forEach(async closedBug => {
+          await bugApi.remove(closedBug);
+          this.onRemove(closedBug);
         });
     },
     onNewBugAdded: function(newBug) {

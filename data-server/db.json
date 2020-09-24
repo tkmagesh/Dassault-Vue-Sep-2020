@@ -1,5 +1,13 @@
 {
-  "bugs": [],
+  "bugs": [
+    {
+      "id": 1,
+      "name": "Server communication failure",
+      "desc": "Laborum mollit exercitation ea quis sunt enim sit laboris ea id cupidatat labore sint laborum. Eiusmod fugiat ea et dolore. Mollit tempor exercitation minim amet occaecat ipsum sit aute ad magna elit ullamco eiusmod fugiat.",
+      "createdAt": "2020-09-24T13:30:58.955Z",
+      "isClosed": false
+    }
+  ],
   "projects": [
     {
       "id": 1,

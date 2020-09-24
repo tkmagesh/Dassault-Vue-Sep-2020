@@ -4,16 +4,10 @@
       class="bugname"
       :class="{ closed: bug.isClosed }"
       @click="onBugNameClick()"
-      >{{ bug.name | trimText }}</span
-    >
+    >{{ bug.name | trimText }}</span>
     <p>{{ bug.desc | trimText(80) }}</p>
     <div class="datetime">{{ bug.createdAt }}</div>
-    <input
-      type="button"
-      value="Remove"
-      :disabled="!bug.isClosed"
-      @click="onRemoveClick(bug)"
-    />
+    <input type="button" value="Remove" :disabled="!bug.isClosed" @click="onRemoveClick(bug)" />
   </li>
 </template>
 
@@ -29,14 +23,13 @@ export default {
     }
   },
   methods: {
-    onBugNameClick: function() {
+    onBugNameClick: async function() {
       this.bug.isClosed = !this.bug.isClosed;
-      bugApi.save(this.bug);
+      await bugApi.save(this.bug);
     },
-    onRemoveClick: function(bug) {
-      bugApi.remove(bug).then(() => {
-        this.$emit("remove", bug);
-      });
+    onRemoveClick: async function(bug) {
+      await bugApi.remove(bug);
+      this.$emit("remove", bug);
     }
   } /* ,
   filters: {
