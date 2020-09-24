@@ -149,3 +149,20 @@ State
     Application State (DONT KEEP IT IN THE COMPONENT)
         Supports the business logic of the application
         It is highly likely that this data would be needed in other parts of the application
+
+    
+
+Disadvantages of SPA / RIA
+    Search Engine Optimization
+    load time
+
+Universal Applications
+    code splitting
+
+
+http://localhost:8080/bugs
+    - index.html
+
+nuxt
+    sensible defaults
+    
