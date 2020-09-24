@@ -1,16 +1,25 @@
 <template>
   <div>
-    <h3>Bug Details</h3>
+    <h3>{{ bug.name }}</h3>
     <hr />
     <p>
-      The bug for bug (id = {{ $route.params.id }}) details will be displayed
-      here
+      {{ bug.desc }}
     </p>
   </div>
 </template>
 
 <script>
-export default {};
+import { mapState, mapActions } from "vuex";
+
+export default {
+  computed: mapState({
+    bug: state => state.bug
+  }),
+  methods: mapActions(["loadById"]),
+  mounted: function() {
+    this.loadById(this.$route.params.id);
+  }
+};
 </script>
 
 <style></style>

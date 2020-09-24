@@ -27,6 +27,13 @@
       "desc": "",
       "createdAt": "2020-09-24T18:29:30.455Z",
       "isClosed": false
+    },
+    {
+      "id": 9,
+      "name": "Another new bug",
+      "desc": "Ad voluptate aliqua ullamco veniam consequat anim. Qui aliquip sit laboris ipsum nostrud et sit sit Lorem aliquip sit in. Enim ex aliqua ad deserunt et amet aute et nisi et culpa. Mollit amet dolore adipisicing ex dolore cillum mollit ad adipisicing. Eu aute commodo ut nostrud consequat irure ex nostrud proident excepteur. Deserunt nisi velit laborum ullamco dolore consectetur commodo consectetur deserunt nulla laborum deserunt excepteur non. Sint veniam nisi cillum sit eiusmod ut dolor sit officia exercitation occaecat officia reprehenderit.",
+      "createdAt": "2020-09-24T19:08:00.318Z",
+      "isClosed": false
     }
   ],
   "projects": [

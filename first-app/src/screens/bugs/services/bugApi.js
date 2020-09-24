@@ -10,7 +10,7 @@ async function getAll() {
 }
 
 async function getById(id) {
-  const response = axios.get(`${serviceEndPoint}/${id}`);
+  const response = await axios.get(`${serviceEndPoint}/${id}`);
   return response.data;
 }
 
