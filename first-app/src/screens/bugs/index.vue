@@ -7,7 +7,12 @@
     <BugEdit @newBug="onNewBugAdded" />
     <section class="list">
       <ol>
-        <BugCard v-for="bug in list" :key="bug.id" :bug="bug" @remove="onRemove" />
+        <BugCard
+          v-for="bug in list"
+          :key="bug.id"
+          :bug="bug"
+          @remove="onRemove"
+        />
       </ol>
       <input type="button" value="Remove Closed" @click="onRemoveClosedClick" />
     </section>
@@ -20,6 +25,7 @@ import BugStats from "./components/BugStats.vue";
 import BugEdit from "./components/BugEdit.vue";
 import BugCard from "./components/BugCard.vue";
 import bugApi from "./services/bugApi";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "BugTracker",
@@ -35,14 +41,14 @@ export default {
         name: "",
         desc: "",
         isClosed: false
-      },
-      list: []
+      }
     };
   },
   mounted: async function() {
-    this.list = await bugApi.getAll();
+    this.loadBugs();
   },
   methods: {
+    ...mapActions(["loadBugs"]),
     onBugNameClick: function(bug) {
       bug.isClosed = !bug.isClosed;
     },
@@ -63,6 +69,9 @@ export default {
     }
   },
   computed: {
+    ...mapState({
+      list: state => state.list
+    }),
     truncatedDesc: function(data) {
       return data.length <= 80 ? data : data.substr(0, 80) + "...";
     }
