@@ -1,14 +1,19 @@
 <template>
   <div id="app">
-    <h1>Bug Tracker</h1>
+    <h1>Bug Tracker - [ {{ bug.name }} ]</h1>
     <hr />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "App",
+  computed: mapState({
+    bug: state => state.bug
+  }),
   components: {}
 };
 </script>
