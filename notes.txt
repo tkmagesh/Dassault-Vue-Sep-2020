@@ -165,4 +165,18 @@ http://localhost:8080/bugs
 
 nuxt
     sensible defaults
-    
+
+assets    
+scss (css preprocessor)
+images
+    < 1kb  -> inline the image
+    > 1kb  -> image file names will be versioned
+
+myIamge.2347624.jpg
+
+
+Contact :
+    tkmagesh77@gmail.com
+    +91-99019-11221
+
+http://bit.ly/javascript-training-videos
