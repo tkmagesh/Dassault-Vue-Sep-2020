@@ -1,24 +1,15 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
-    <!-- <HelloWorld msg="Have a good day!" /> -->
-    <!-- <Calculator /> -->
-    <BugTracker />
+    <h1>Bug Tracker</h1>
+    <hr />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-/* import HelloWorld from "./components/HelloWorld.vue"; */
-//import Calculator from "./components/Calculator.vue";
-import BugTracker from "./screens/bugs";
-
 export default {
   name: "App",
-  components: {
-    /* HelloWorld, */
-    //Calculator
-    BugTracker
-  }
+  components: {}
 };
 </script>
 

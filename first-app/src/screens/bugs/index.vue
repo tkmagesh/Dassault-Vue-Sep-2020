@@ -1,10 +1,8 @@
 <template>
   <div>
-    <h1>Bug Tracker</h1>
-    <hr />
+    <router-link to="/new">Create New</router-link>
     <BugStats :data="list" />
     <BugSort />
-    <BugEdit />
     <section class="list">
       <ol>
         <BugCard v-for="bug in list" :key="bug.id" :bug="bug" />
@@ -17,7 +15,6 @@
 <script>
 import BugSort from "./components/BugSort.vue";
 import BugStats from "./components/BugStats.vue";
-import BugEdit from "./components/BugEdit.vue";
 import BugCard from "./components/BugCard.vue";
 
 import { mapState, mapActions } from "vuex";
@@ -27,7 +24,6 @@ export default {
   components: {
     BugSort,
     BugStats,
-    BugEdit,
     BugCard
   },
   data: function() {

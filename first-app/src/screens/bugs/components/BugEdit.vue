@@ -36,6 +36,7 @@ export default {
     ...mapActions(["addNew"]),
     onAddNewClick: async function() {
       this.addNew(this.newBugData);
+      this.$router.push({ path: "/bugs" });
     }
   }
 };
