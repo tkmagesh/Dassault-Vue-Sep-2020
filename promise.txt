@@ -1,0 +1,38 @@
+function add(x,y){
+    return new Promise(function(resolveFn, rejectFn){
+        console.log(`Processing ${x} and ${y}`);
+        setTimeout(function(){
+            const result = x + y;
+            resolveFn(result);
+        },5000);
+    });
+}
+
+function multiply(x,y){
+    return new Promise(function(resolveFn, rejectFn){
+        console.log(`Processing ${x} and ${y}`);
+        setTimeout(function(){
+            const result = x * y;
+            resolveFn(result);
+        },9000);
+    });
+}
+
+//Usage
+var p1 = add(100,200);
+var p2 = multiply(100,200);
+Promise.all([p1, p2])
+    .then(function(results){
+        console.log('addResult = ', results[0]);
+        console.log('multiplyResult = ', results[1]);
+     });
+
+//OR
+
+var p1 = add(100,200);
+var p2 = multiply(100,200);
+const [addResult, multiplyResult] = await Promise.all([p1, p2])
+console.log('addResult = ', addResult);
+console.log('multiplyResult = ', multiplyResult);
+
+
