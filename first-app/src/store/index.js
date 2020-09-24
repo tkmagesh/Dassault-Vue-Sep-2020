@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import bugApi from "../screens/bugs/services/bugApi";
+import bugActions from "../screens/bugs/actions";
 
 Vue.use(Vuex);
 
@@ -26,21 +26,7 @@ const store = new Vuex.Store({
       );
     }
   },
-  actions: {
-    loadBugs: ,
-    addNew: ,
-    remove: ,
-    toggle: ,
-    removeClosed: async function(context) {
-      const currentBugs = context.state.list;
-      currentBugs
-        .filter(bug => bug.isClosed)
-        .forEach(async closedBug => {
-          await bugApi.remove(closedBug);
-          context.commit("removeBug", closedBug);
-        });
-    }
-  }
+  actions: bugActions
 });
 
 export default store;
